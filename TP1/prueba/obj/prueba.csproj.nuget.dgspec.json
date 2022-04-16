@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP1\\Entidades\\Entidades.csproj": {}
+    "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP1\\prueba\\prueba.csproj": {}
   },
   "projects": {
-    "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP1\\Entidades\\Entidades.csproj": {
+    "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP1\\prueba\\prueba.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP1\\Entidades\\Entidades.csproj",
-        "projectName": "Entidades",
-        "projectPath": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP1\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP1\\prueba\\prueba.csproj",
+        "projectName": "prueba",
+        "projectPath": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP1\\prueba\\prueba.csproj",
         "packagesPath": "C:\\Users\\juanm\\.nuget\\packages\\",
-        "outputPath": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP1\\Entidades\\obj\\",
+        "outputPath": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP1\\prueba\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\juanm\\AppData\\Roaming\\NuGet\\NuGet.Config",
