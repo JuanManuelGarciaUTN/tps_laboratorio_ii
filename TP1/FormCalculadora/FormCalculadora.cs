@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Entidades;
+using System;
 using System.Windows.Forms;
-using Entidades;
 
 namespace FormCalculadora
 {
@@ -74,7 +67,7 @@ namespace FormCalculadora
         private void btnOperar_Click(object sender, EventArgs e)
         {
             double resultado = FormCalculadora.Operar(txtNumero1.Text, txtNumero2.Text, cmbOperador.Text);
-            resultado = Math.Round(resultado,2);
+            resultado = Math.Round(resultado, 2);
             lblResultado.Text = resultado.ToString();
             if (cmbOperador.SelectedIndex == 0)
             {
