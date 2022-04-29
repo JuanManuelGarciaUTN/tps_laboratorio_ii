@@ -1,47 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
     /// <summary>
     /// No podrá tener clases heredadas.
     /// </summary>
-    public class Taller
+    public sealed class Taller
     {
-        private List<Vehiculo> vehiculos;
-        private int espacioDisponible;
+        //enum anidado
         public enum ETipo
         {
             Ciclomotor, Sedan, SUV, Todos
         }
 
-        #region "Constructores"
+        //atributos
+        private List<Vehiculo> vehiculos;
+        private int espacioDisponible;
+
+
+        //constructores
         private Taller()
         {
             this.vehiculos = new List<Vehiculo>();
         }
         public Taller(int espacioDisponible)
-            :this()
+            : this()
         {
             this.espacioDisponible = espacioDisponible;
         }
-        #endregion
 
-        #region "Sobrecargas"
-        /// <summary>
-        /// Muestro el estacionamiento y TODOS los vehículos
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return Taller.Listar(this, ETipo.Todos);
-        }
-        #endregion
 
-        #region "Métodos"
+        //metodos
 
         /// <summary>
         /// Expone los datos del elemento y su lista (incluidas sus herencias)
@@ -56,10 +46,9 @@ namespace Entidades
 
             sb.AppendFormat("Tenemos {0} lugares ocupados de un total de {1} disponibles", taller.vehiculos.Count, taller.espacioDisponible);
             sb.AppendLine("");
-            Console.WriteLine(tipo);
             foreach (Vehiculo v in taller.vehiculos)
             {
-                if(tipo == ETipo.Todos || tipo.ToString().ToUpper() == v.GetType().Name.ToUpper())
+                if (tipo == ETipo.Todos || tipo.ToString().ToUpper() == v.GetType().Name.ToUpper())
                 {
                     sb.AppendLine(v.Mostrar());
                 }
@@ -67,9 +56,21 @@ namespace Entidades
 
             return sb.ToString();
         }
-        #endregion
 
-        #region "Operadores"
+        //sobrecarga de metodos
+
+        /// <summary>
+        /// Muestro el estacionamiento y TODOS los vehículos
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Taller.Listar(this, ETipo.Todos);
+        }
+
+
+        //sobrecarga operadores
+
         /// <summary>
         /// Agregará un elemento a la lista
         /// </summary>
@@ -84,12 +85,13 @@ namespace Entidades
                     return taller;
             }
 
-            if(taller.vehiculos.Count < taller.espacioDisponible)
+            if (taller.vehiculos.Count < taller.espacioDisponible)
             {
                 taller.vehiculos.Add(vehiculo);
             }
             return taller;
         }
+
         /// <summary>
         /// Quitará un elemento de la lista
         /// </summary>
@@ -109,6 +111,5 @@ namespace Entidades
 
             return taller;
         }
-        #endregion
     }
 }

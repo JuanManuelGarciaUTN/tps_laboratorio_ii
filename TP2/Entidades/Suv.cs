@@ -5,10 +5,14 @@ namespace Entidades
 {
     public class Suv : Vehiculo
     {
+        //constructor
         public Suv(EMarca marca, string chasis, ConsoleColor color)
             : base(marca, chasis, color)
         {
         }
+
+        //propiedades
+
         /// <summary>
         /// SUV son 'Grande'
         /// </summary>
@@ -20,6 +24,7 @@ namespace Entidades
             }
         }
 
+        //sobrecarga de metodos
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();

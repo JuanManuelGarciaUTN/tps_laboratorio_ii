@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
     public class Ciclomotor : Vehiculo
     {
+        //constructor
         public Ciclomotor(EMarca marca, string chasis, ConsoleColor color)
-            :base(marca, chasis, color)
+            : base(marca, chasis, color)
         {
         }
-        
+
+        //propiedades
+
         /// <summary>
         /// Ciclomotor son 'Chico'
         /// </summary>
@@ -24,6 +24,7 @@ namespace Entidades
             }
         }
 
+        //sobrecarga de metodos
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();

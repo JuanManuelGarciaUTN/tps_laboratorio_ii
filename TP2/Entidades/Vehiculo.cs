@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
@@ -11,6 +8,8 @@ namespace Entidades
     /// </summary>
     public abstract class Vehiculo
     {
+        //enum anidados
+
         public enum EMarca
         {
             Chevrolet, Ford, Renault, Toyota, BMW, Honda, HarleyDavidson
@@ -19,9 +18,15 @@ namespace Entidades
         {
             Chico, Mediano, Grande
         }
+
+        //atributos
+
         private EMarca marca;
         private string chasis;
         private ConsoleColor color;
+
+
+        //constructor
 
         public Vehiculo(EMarca marca, string chasis, ConsoleColor color)
         {
@@ -30,10 +35,15 @@ namespace Entidades
             this.color = color;
         }
 
+        //propiedades
+
         /// <summary>
         /// ReadOnly: Retornará el tamaño
         /// </summary>
-        protected abstract ETamanio Tamanio { get;}
+        protected abstract ETamanio Tamanio { get; }
+
+
+        //metodos
 
         /// <summary>
         /// Publica todos los datos del Vehiculo.
@@ -43,6 +53,9 @@ namespace Entidades
         {
             return (string)this;
         }
+
+
+        //sobrecarga de operadores
 
         public static explicit operator string(Vehiculo p)
         {
