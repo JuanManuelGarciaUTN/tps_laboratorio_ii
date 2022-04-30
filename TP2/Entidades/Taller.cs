@@ -48,9 +48,32 @@ namespace Entidades
             sb.AppendLine("");
             foreach (Vehiculo v in taller.vehiculos)
             {
-                if (tipo == ETipo.Todos || tipo.ToString().ToUpper() == v.GetType().Name.ToUpper())
+                switch (tipo)
                 {
-                    sb.AppendLine(v.Mostrar());
+                    case ETipo.SUV:
+                        if(v is Suv)
+                        {
+                            sb.AppendLine(v.Mostrar());
+                        }
+                        break;
+
+                    case ETipo.Ciclomotor:
+                        if(v is Ciclomotor)
+                        {
+                            sb.AppendLine(v.Mostrar());
+                        }
+                        break;
+
+                    case ETipo.Sedan:
+                        if(v is Sedan)
+                        {
+                            sb.AppendLine(v.Mostrar());
+                        }
+                        break;
+
+                    default:
+                        sb.AppendLine(v.Mostrar());
+                        break;
                 }
             }
 
