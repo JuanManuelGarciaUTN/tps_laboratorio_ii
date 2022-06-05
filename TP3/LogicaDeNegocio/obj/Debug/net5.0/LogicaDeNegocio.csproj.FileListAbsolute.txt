@@ -1,0 +1,12 @@
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\bin\Debug\net5.0\LogicaDeNegocio.deps.json
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\bin\Debug\net5.0\LogicaDeNegocio.dll
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\bin\Debug\net5.0\LogicaDeNegocio.pdb
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\obj\Debug\net5.0\LogicaDeNegocio.csproj.AssemblyReference.cache
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\obj\Debug\net5.0\LogicaDeNegocio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\obj\Debug\net5.0\LogicaDeNegocio.AssemblyInfoInputs.cache
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\obj\Debug\net5.0\LogicaDeNegocio.AssemblyInfo.cs
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\obj\Debug\net5.0\LogicaDeNegocio.csproj.CoreCompileInputs.cache
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\obj\Debug\net5.0\LogicaDeNegocio.dll
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\obj\Debug\net5.0\refint\LogicaDeNegocio.dll
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\obj\Debug\net5.0\LogicaDeNegocio.pdb
+C:\Todo\UTN\TPsProgramacion\tps_laboratorio_ii\TP3\LogicaDeNegocio\obj\Debug\net5.0\ref\LogicaDeNegocio.dll

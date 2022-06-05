@@ -1,0 +1,143 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0-windows7.0": {
+      "LogicaDeNegocio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/LogicaDeNegocio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LogicaDeNegocio.dll": {}
+        }
+      },
+      "ModificarPrecios/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "LogicaDeNegocio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ModificarPrecios.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ModificarPrecios.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "ReservaDeTurno/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "LogicaDeNegocio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ReservaDeTurno.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ReservaDeTurno.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      }
+    }
+  },
+  "libraries": {
+    "LogicaDeNegocio/1.0.0": {
+      "type": "project",
+      "path": "../LogicaDeNegocio/LogicaDeNegocio.csproj",
+      "msbuildProject": "../LogicaDeNegocio/LogicaDeNegocio.csproj"
+    },
+    "ModificarPrecios/1.0.0": {
+      "type": "project",
+      "path": "../ModificarPrecios/ModificarPrecios.csproj",
+      "msbuildProject": "../ModificarPrecios/ModificarPrecios.csproj"
+    },
+    "ReservaDeTurno/1.0.0": {
+      "type": "project",
+      "path": "../ReservaDeTurno/ReservaDeTurno.csproj",
+      "msbuildProject": "../ReservaDeTurno/ReservaDeTurno.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0-windows7.0": [
+      "LogicaDeNegocio >= 1.0.0",
+      "ModificarPrecios >= 1.0.0",
+      "ReservaDeTurno >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\juanm\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP3\\AdministracionOdontologia\\AdministracionOdontologia.csproj",
+      "projectName": "AdministracionOdontologia",
+      "projectPath": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP3\\AdministracionOdontologia\\AdministracionOdontologia.csproj",
+      "packagesPath": "C:\\Users\\juanm\\.nuget\\packages\\",
+      "outputPath": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP3\\AdministracionOdontologia\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\juanm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0-windows7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "projectReferences": {
+            "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP3\\LogicaDeNegocio\\LogicaDeNegocio.csproj": {
+              "projectPath": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP3\\LogicaDeNegocio\\LogicaDeNegocio.csproj"
+            },
+            "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP3\\ModificarPrecios\\ModificarPrecios.csproj": {
+              "projectPath": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP3\\ModificarPrecios\\ModificarPrecios.csproj"
+            },
+            "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP3\\ReservaDeTurno\\ReservaDeTurno.csproj": {
+              "projectPath": "C:\\Todo\\UTN\\TPsProgramacion\\tps_laboratorio_ii\\TP3\\ReservaDeTurno\\ReservaDeTurno.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0-windows7.0": {
+        "targetAlias": "net5.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

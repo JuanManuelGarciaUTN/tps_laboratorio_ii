@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicaDeNegocio", "LogicaDeNegocio\LogicaDeNegocio.csproj", "{B3D2A9AF-05D0-4C31-8455-0560F89F1BE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReservaDeTurno", "ReservaDeTurno\ReservaDeTurno.csproj", "{3120427C-E038-45DC-940F-07751415A9DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HubPrincipal", "HubPrincipal\HubPrincipal.csproj", "{6956229D-0677-4E97-95A3-A1E01F1C7997}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdministracionOdontologia", "AdministracionOdontologia\AdministracionOdontologia.csproj", "{2F3019A1-EFED-4934-9AD6-D5C823F0558B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModificarPrecios", "ModificarPrecios\ModificarPrecios.csproj", "{E8827D03-609A-4E0F-A1D8-0093A19B665E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logeando", "Logeando\Logeando.csproj", "{F4D7CF41-F8E3-4433-9EE7-2CA475106562}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUnitarios", "TestUnitarios\TestUnitarios.csproj", "{3C35C70B-B281-496D-8C82-5B497ADB9FB4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3D2A9AF-05D0-4C31-8455-0560F89F1BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D2A9AF-05D0-4C31-8455-0560F89F1BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D2A9AF-05D0-4C31-8455-0560F89F1BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D2A9AF-05D0-4C31-8455-0560F89F1BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3120427C-E038-45DC-940F-07751415A9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3120427C-E038-45DC-940F-07751415A9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3120427C-E038-45DC-940F-07751415A9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3120427C-E038-45DC-940F-07751415A9DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6956229D-0677-4E97-95A3-A1E01F1C7997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6956229D-0677-4E97-95A3-A1E01F1C7997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6956229D-0677-4E97-95A3-A1E01F1C7997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6956229D-0677-4E97-95A3-A1E01F1C7997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3019A1-EFED-4934-9AD6-D5C823F0558B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3019A1-EFED-4934-9AD6-D5C823F0558B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3019A1-EFED-4934-9AD6-D5C823F0558B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3019A1-EFED-4934-9AD6-D5C823F0558B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8827D03-609A-4E0F-A1D8-0093A19B665E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8827D03-609A-4E0F-A1D8-0093A19B665E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8827D03-609A-4E0F-A1D8-0093A19B665E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8827D03-609A-4E0F-A1D8-0093A19B665E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4D7CF41-F8E3-4433-9EE7-2CA475106562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D7CF41-F8E3-4433-9EE7-2CA475106562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D7CF41-F8E3-4433-9EE7-2CA475106562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D7CF41-F8E3-4433-9EE7-2CA475106562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C35C70B-B281-496D-8C82-5B497ADB9FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C35C70B-B281-496D-8C82-5B497ADB9FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C35C70B-B281-496D-8C82-5B497ADB9FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C35C70B-B281-496D-8C82-5B497ADB9FB4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34377B8D-4755-4909-8777-77E832456542}
+	EndGlobalSection
+EndGlobal

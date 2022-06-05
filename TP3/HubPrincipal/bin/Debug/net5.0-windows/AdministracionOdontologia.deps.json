@@ -1,0 +1,64 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "AdministracionOdontologia/1.0.0": {
+        "dependencies": {
+          "LogicaDeNegocio": "1.0.0",
+          "ModificarPrecios": "1.0.0",
+          "ReservaDeTurno": "1.0.0"
+        },
+        "runtime": {
+          "AdministracionOdontologia.dll": {}
+        }
+      },
+      "LogicaDeNegocio/1.0.0": {
+        "runtime": {
+          "LogicaDeNegocio.dll": {}
+        }
+      },
+      "ModificarPrecios/1.0.0": {
+        "dependencies": {
+          "LogicaDeNegocio": "1.0.0"
+        },
+        "runtime": {
+          "ModificarPrecios.dll": {}
+        }
+      },
+      "ReservaDeTurno/1.0.0": {
+        "dependencies": {
+          "LogicaDeNegocio": "1.0.0"
+        },
+        "runtime": {
+          "ReservaDeTurno.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AdministracionOdontologia/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LogicaDeNegocio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ModificarPrecios/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ReservaDeTurno/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

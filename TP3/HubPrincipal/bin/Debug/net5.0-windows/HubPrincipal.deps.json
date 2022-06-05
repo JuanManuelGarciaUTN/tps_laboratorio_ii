@@ -1,0 +1,92 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "HubPrincipal/1.0.0": {
+        "dependencies": {
+          "AdministracionOdontologia": "1.0.0",
+          "Logeando": "1.0.0",
+          "ReservaDeTurno": "1.0.0"
+        },
+        "runtime": {
+          "HubPrincipal.dll": {}
+        }
+      },
+      "AdministracionOdontologia/1.0.0": {
+        "dependencies": {
+          "LogicaDeNegocio": "1.0.0",
+          "ModificarPrecios": "1.0.0",
+          "ReservaDeTurno": "1.0.0"
+        },
+        "runtime": {
+          "AdministracionOdontologia.dll": {}
+        }
+      },
+      "Logeando/1.0.0": {
+        "dependencies": {
+          "LogicaDeNegocio": "1.0.0"
+        },
+        "runtime": {
+          "Logeando.dll": {}
+        }
+      },
+      "LogicaDeNegocio/1.0.0": {
+        "runtime": {
+          "LogicaDeNegocio.dll": {}
+        }
+      },
+      "ModificarPrecios/1.0.0": {
+        "dependencies": {
+          "LogicaDeNegocio": "1.0.0"
+        },
+        "runtime": {
+          "ModificarPrecios.dll": {}
+        }
+      },
+      "ReservaDeTurno/1.0.0": {
+        "dependencies": {
+          "LogicaDeNegocio": "1.0.0"
+        },
+        "runtime": {
+          "ReservaDeTurno.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HubPrincipal/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AdministracionOdontologia/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Logeando/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LogicaDeNegocio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ModificarPrecios/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ReservaDeTurno/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Logeando/1.0.0": {
+        "dependencies": {
+          "LogicaDeNegocio": "1.0.0"
+        },
+        "runtime": {
+          "Logeando.dll": {}
+        }
+      },
+      "LogicaDeNegocio/1.0.0": {
+        "runtime": {
+          "LogicaDeNegocio.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Logeando/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LogicaDeNegocio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
