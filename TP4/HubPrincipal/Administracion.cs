@@ -5,6 +5,7 @@ using System.IO;
 using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text;
 
 namespace Vista
 {
@@ -26,6 +27,7 @@ namespace Vista
         private void Administracion_Load(object sender, EventArgs e)
         {
             ActualizarTurnos();
+            ActualizarHistorial();
             DeterminarEstadoInicialBGM();
             selectorFechaTurnos.MinDate = DateTime.Now;
             selectorFechaHistorial.MaxDate = DateTime.Now;
@@ -39,6 +41,14 @@ namespace Vista
         private void selectorFecha_ValueChanged(object sender, EventArgs e)
         {
             ActualizarTurnos();
+            if(selectorFechaTurnos.Value.DayOfYear != DateTime.Now.DayOfYear)
+            {
+                btnAtender.Enabled = false;
+            }
+            else
+            {
+                btnAtender.Enabled = true;
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -177,8 +187,9 @@ namespace Vista
         }
 
         /// <summary>
-        /// Elimina el turno que se encuentra seleccionado
+        /// Elimina el turno que se encuentra seleccionado de la lista que se le muestra al usuario
         /// </summary>
+        /// <returns>Turno que estaba seleccionado - o null si no hay un turno seleccionado</returns>
         private Turno? BorrarDeLaVistaTurnoSeleccionado()
         {
             try
@@ -225,7 +236,7 @@ namespace Vista
         {
             //Utilizo task para que en caso de no estar actualmente visible el form
             //Espere a que se vuelva visible para mostrar el recordatorio
-            //Y que el bucle while(this.Visible == false) no congele la ejecucion del form
+            //Y que el bucle while(this.Visible == false) no congele la ejecucion actual
             Task.Run(() =>
             {
                 long horaAVerificar = DateTime.Now.ObtenerFormatoFechaHoraLong();
@@ -252,6 +263,22 @@ namespace Vista
         private void selectorFechaHistorial_ValueChanged(object sender, EventArgs e)
         {
             ActualizarHistorial();
+        }
+        private void tabPage2_Enter(object sender, EventArgs e)
+        {
+            ActualizarHistorial();
+        }
+
+        private void lstHistorial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                rtbDatosExtendidos.Text = ((Turno)lstHistorial.SelectedItem).MostrarCompacto();
+            }
+            catch(Exception)
+            {
+                rtbDatosExtendidos.Text = "";
+            }
         }
     }
 }

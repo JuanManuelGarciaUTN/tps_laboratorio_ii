@@ -43,10 +43,10 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGenerarTurno = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.rtbDatosExtendidos = new System.Windows.Forms.RichTextBox();
             this.lstHistorial = new System.Windows.Forms.ListBox();
-            this.txtDniFiltro = new System.Windows.Forms.TextBox();
             this.lblHistorial = new System.Windows.Forms.Label();
-            this.lblFiltroDNI = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblSelectorFechaHistorial = new System.Windows.Forms.Label();
             this.selectorFechaHistorial = new System.Windows.Forms.DateTimePicker();
             this.btnCambiarEstadoBGM = new System.Windows.Forms.Button();
@@ -122,8 +122,9 @@
             this.lblTurnos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTurnos.Location = new System.Drawing.Point(6, 15);
             this.lblTurnos.Name = "lblTurnos";
-            this.lblTurnos.Size = new System.Drawing.Size(0, 21);
+            this.lblTurnos.Size = new System.Drawing.Size(119, 21);
             this.lblTurnos.TabIndex = 0;
+            this.lblTurnos.Text = "Turnos del Dia";
             // 
             // btnExportar
             // 
@@ -143,8 +144,9 @@
             this.lblFecha.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblFecha.Location = new System.Drawing.Point(603, 15);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(0, 21);
+            this.lblFecha.Size = new System.Drawing.Size(143, 21);
             this.lblFecha.TabIndex = 0;
+            this.lblFecha.Text = "Selector de Fecha";
             // 
             // btnImportar
             // 
@@ -232,10 +234,10 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.rtbDatosExtendidos);
             this.tabPage2.Controls.Add(this.lstHistorial);
-            this.tabPage2.Controls.Add(this.txtDniFiltro);
             this.tabPage2.Controls.Add(this.lblHistorial);
-            this.tabPage2.Controls.Add(this.lblFiltroDNI);
+            this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.lblSelectorFechaHistorial);
             this.tabPage2.Controls.Add(this.selectorFechaHistorial);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
@@ -244,6 +246,16 @@
             this.tabPage2.Size = new System.Drawing.Size(754, 460);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Historial de Atencion";
+            this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
+            // 
+            // rtbDatosExtendidos
+            // 
+            this.rtbDatosExtendidos.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rtbDatosExtendidos.Location = new System.Drawing.Point(603, 109);
+            this.rtbDatosExtendidos.Name = "rtbDatosExtendidos";
+            this.rtbDatosExtendidos.Size = new System.Drawing.Size(139, 344);
+            this.rtbDatosExtendidos.TabIndex = 11;
+            this.rtbDatosExtendidos.Text = "";
             // 
             // lstHistorial
             // 
@@ -273,14 +285,7 @@
             this.lstHistorial.Name = "lstHistorial";
             this.lstHistorial.Size = new System.Drawing.Size(584, 418);
             this.lstHistorial.TabIndex = 10;
-            // 
-            // txtDniFiltro
-            // 
-            this.txtDniFiltro.Location = new System.Drawing.Point(603, 116);
-            this.txtDniFiltro.Name = "txtDniFiltro";
-            this.txtDniFiltro.PlaceholderText = "DNI a Filtrar";
-            this.txtDniFiltro.Size = new System.Drawing.Size(140, 23);
-            this.txtDniFiltro.TabIndex = 9;
+            this.lstHistorial.SelectedIndexChanged += new System.EventHandler(this.lstHistorial_SelectedIndexChanged);
             // 
             // lblHistorial
             // 
@@ -292,15 +297,15 @@
             this.lblHistorial.TabIndex = 4;
             this.lblHistorial.Text = "Historial";
             // 
-            // lblFiltroDNI
+            // label1
             // 
-            this.lblFiltroDNI.AutoSize = true;
-            this.lblFiltroDNI.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblFiltroDNI.Location = new System.Drawing.Point(603, 92);
-            this.lblFiltroDNI.Name = "lblFiltroDNI";
-            this.lblFiltroDNI.Size = new System.Drawing.Size(114, 21);
-            this.lblFiltroDNI.TabIndex = 5;
-            this.lblFiltroDNI.Text = "Filtro Por DNI";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(600, 85);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 21);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Datos Extendidos";
             // 
             // lblSelectorFechaHistorial
             // 
@@ -340,7 +345,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1061, 584);
+            this.ClientSize = new System.Drawing.Size(773, 503);
             this.Controls.Add(this.btnCambiarEstadoBGM);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -364,9 +369,7 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListBox lstHistorial;
-        private System.Windows.Forms.TextBox txtDniFiltro;
         private System.Windows.Forms.Label lblHistorial;
-        private System.Windows.Forms.Label lblFiltroDNI;
         private System.Windows.Forms.Label lblSelectorFechaHistorial;
         private System.Windows.Forms.DateTimePicker selectorFechaHistorial;
         private System.Windows.Forms.TabPage tabPage1;
@@ -382,5 +385,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGenerarTurno;
         private System.Windows.Forms.Button btnCambiarEstadoBGM;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox rtbDatosExtendidos;
     }
 }

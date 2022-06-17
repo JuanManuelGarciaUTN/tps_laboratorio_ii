@@ -351,7 +351,6 @@ namespace LogicaDeNegocio
             turnosDelDia.Sort();
             return turnosDelDia;
         }
-
         public List<Turno> ObtenerTurnosDelDia(DateTime fecha, bool atendidos)
         {
             List<Turno> turnosDelDia = new List<Turno>();

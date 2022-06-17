@@ -87,7 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(307, 432);
+            this.ClientSize = new System.Drawing.Size(307, 268);
             this.Controls.Add(this.btnBGMCambiarEstado);
             this.Controls.Add(this.btnAdministracion);
             this.Controls.Add(this.btnTurno);

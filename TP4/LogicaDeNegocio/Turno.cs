@@ -177,7 +177,7 @@ namespace LogicaDeNegocio
         /// <returns></returns>
         private static bool EsUnNombreInvalido(string nombre)
         {
-            string filtro = " abcdefghijklmnñoprstuvwxyzáéíóú";
+            string filtro = " abcdefghijklmnñopqrstuvwxyzáéíóúü";
             nombre = nombre.ToLower();
 
             foreach (char letra in nombre)
@@ -224,6 +224,30 @@ namespace LogicaDeNegocio
             sb.AppendLine($"Nombre: {this.nombre} {this.apellido}");
             sb.AppendLine($"DNI: {this.DniPaciente}");
             sb.AppendLine($"Telefono: {this.telefono}");
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Genera un string con los datos del turno en un formato mas compacto
+        /// </summary>
+        /// <returns></returns>
+        public string MostrarCompacto()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Fecha:");
+            sb.AppendLine($"  {FormatearFecha()}");
+            sb.AppendLine($"Tipo de Consulta:");
+            sb.AppendLine($"  {this.tipo}");
+            sb.AppendLine($"Precio:");
+            sb.AppendLine($"  ${this.Precio}");
+            sb.AppendLine($"Nombre:");
+            sb.AppendLine($"  {this.nombre}");
+            sb.AppendLine($"  {this.apellido}");
+            sb.AppendLine($"DNI:");
+            sb.AppendLine($"  {this.DniPaciente}");
+            sb.AppendLine($"Telefono:");
+            sb.AppendLine($"  {this.telefono}");
 
             return sb.ToString();
         }
