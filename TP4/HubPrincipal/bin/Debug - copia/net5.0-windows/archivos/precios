@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfFloat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <float>1000</float>
+  <float>8000</float>
+  <float>25000</float>
+  <float>1500</float>
+</ArrayOfFloat>

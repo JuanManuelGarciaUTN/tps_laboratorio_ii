@@ -276,7 +276,7 @@ namespace LogicaDeNegocio
             List<Turno> turnosDelDia = ObtenerTurnosDelDia(fecha);
             List<DateTime> turnosDisponibles = new List<DateTime>();
 
-            while(horario < DateTime.Now.AddHours(2))
+            while(horario < DateTime.Now.AddHours(2) && horario.Hour < 18)
             {
                 horario = horario.AddMinutes(30);
             }
