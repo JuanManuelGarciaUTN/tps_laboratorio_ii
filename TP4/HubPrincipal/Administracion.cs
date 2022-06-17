@@ -184,6 +184,10 @@ namespace Vista
         {
             DateTime fechaSeleccionada = selectorFechaHistorial.Value;
             lstHistorial.DataSource = manejadorDeTurnos.ObtenerTurnosDelDia(fechaSeleccionada, true);
+            if (lstHistorial.Items.Count == 0)
+            {
+                rtbDatosExtendidos.Text = "";
+            }
         }
 
         /// <summary>
