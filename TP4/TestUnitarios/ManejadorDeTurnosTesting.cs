@@ -23,7 +23,6 @@ namespace TestUnitarios
             //arrange
             string pathPrecios = "./archivoTampocoExiste";
             bool preciosExiste;
-            bool turnosTieneFormatoPorDefecto = false;
             bool preciosTieneFormatoPorDefecto = false;
 
             //act
@@ -33,17 +32,13 @@ namespace TestUnitarios
             preciosExiste = File.Exists(pathPrecios);
             File.Delete(pathPrecios);
 
-            if(0 == manejadorDeTurnos.ObtenerTurnosDelDia(DateTime.Now).Count)
-            {
-                turnosTieneFormatoPorDefecto = true;
-            }
             if(manejadorDeTurnos.Precios.Count == 4)
             {
                 preciosTieneFormatoPorDefecto = true;
             }
 
             //assert
-            Assert.IsTrue(preciosExiste && turnosTieneFormatoPorDefecto && preciosTieneFormatoPorDefecto);
+            Assert.IsTrue(preciosExiste && preciosTieneFormatoPorDefecto);
         }
     }
 }
