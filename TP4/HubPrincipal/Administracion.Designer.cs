@@ -43,9 +43,11 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGenerarTurno = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.rtbRecaudacion = new System.Windows.Forms.RichTextBox();
             this.rtbDatosExtendidos = new System.Windows.Forms.RichTextBox();
             this.lstHistorial = new System.Windows.Forms.ListBox();
             this.lblHistorial = new System.Windows.Forms.Label();
+            this.lblRecaudacion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSelectorFechaHistorial = new System.Windows.Forms.Label();
             this.selectorFechaHistorial = new System.Windows.Forms.DateTimePicker();
@@ -63,7 +65,7 @@
             this.tabControl.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(762, 488);
+            this.tabControl.Size = new System.Drawing.Size(762, 561);
             this.tabControl.TabIndex = 11;
             // 
             // tabPage1
@@ -83,7 +85,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(754, 460);
+            this.tabPage1.Size = new System.Drawing.Size(754, 533);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Turnos Pendientes";
             // 
@@ -110,10 +112,13 @@
             "15",
             "16",
             "17",
-            "18"});
+            "18",
+            "19",
+            "20",
+            "21"});
             this.lstTurnos.Location = new System.Drawing.Point(6, 37);
             this.lstTurnos.Name = "lstTurnos";
-            this.lstTurnos.Size = new System.Drawing.Size(584, 418);
+            this.lstTurnos.Size = new System.Drawing.Size(584, 487);
             this.lstTurnos.TabIndex = 1;
             // 
             // lblTurnos
@@ -124,13 +129,13 @@
             this.lblTurnos.Name = "lblTurnos";
             this.lblTurnos.Size = new System.Drawing.Size(119, 21);
             this.lblTurnos.TabIndex = 0;
-            this.lblTurnos.Text = "Turnos del Dia";
+            this.lblTurnos.Text = "Turnos del Día";
             // 
             // btnExportar
             // 
             this.btnExportar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnExportar.Location = new System.Drawing.Point(603, 415);
-            this.btnExportar.Margin = new System.Windows.Forms.Padding(3, 5, 10, 9);
+            this.btnExportar.Location = new System.Drawing.Point(602, 484);
+            this.btnExportar.Margin = new System.Windows.Forms.Padding(0, 24, 0, 0);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(140, 40);
             this.btnExportar.TabIndex = 9;
@@ -151,8 +156,8 @@
             // btnImportar
             // 
             this.btnImportar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnImportar.Location = new System.Drawing.Point(604, 361);
-            this.btnImportar.Margin = new System.Windows.Forms.Padding(3, 5, 10, 9);
+            this.btnImportar.Location = new System.Drawing.Point(603, 420);
+            this.btnImportar.Margin = new System.Windows.Forms.Padding(0, 24, 0, 0);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(140, 40);
             this.btnImportar.TabIndex = 8;
@@ -163,8 +168,8 @@
             // btnAtender
             // 
             this.btnAtender.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAtender.Location = new System.Drawing.Point(604, 91);
-            this.btnAtender.Margin = new System.Windows.Forms.Padding(3, 9, 10, 9);
+            this.btnAtender.Location = new System.Drawing.Point(602, 100);
+            this.btnAtender.Margin = new System.Windows.Forms.Padding(0, 24, 0, 0);
             this.btnAtender.Name = "btnAtender";
             this.btnAtender.Size = new System.Drawing.Size(140, 40);
             this.btnAtender.TabIndex = 3;
@@ -186,8 +191,8 @@
             // btnModificar
             // 
             this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnModificar.Location = new System.Drawing.Point(603, 145);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(3, 5, 10, 9);
+            this.btnModificar.Location = new System.Drawing.Point(603, 164);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(0, 24, 0, 0);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(140, 40);
             this.btnModificar.TabIndex = 4;
@@ -198,8 +203,8 @@
             // btnCambiarPrecios
             // 
             this.btnCambiarPrecios.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCambiarPrecios.Location = new System.Drawing.Point(604, 307);
-            this.btnCambiarPrecios.Margin = new System.Windows.Forms.Padding(3, 5, 10, 9);
+            this.btnCambiarPrecios.Location = new System.Drawing.Point(602, 356);
+            this.btnCambiarPrecios.Margin = new System.Windows.Forms.Padding(0, 24, 0, 0);
             this.btnCambiarPrecios.Name = "btnCambiarPrecios";
             this.btnCambiarPrecios.Size = new System.Drawing.Size(140, 40);
             this.btnCambiarPrecios.TabIndex = 7;
@@ -210,8 +215,8 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(604, 199);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 5, 10, 9);
+            this.btnCancelar.Location = new System.Drawing.Point(602, 228);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(0, 24, 0, 0);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(140, 40);
             this.btnCancelar.TabIndex = 5;
@@ -222,8 +227,8 @@
             // btnGenerarTurno
             // 
             this.btnGenerarTurno.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnGenerarTurno.Location = new System.Drawing.Point(604, 253);
-            this.btnGenerarTurno.Margin = new System.Windows.Forms.Padding(3, 5, 10, 9);
+            this.btnGenerarTurno.Location = new System.Drawing.Point(602, 292);
+            this.btnGenerarTurno.Margin = new System.Windows.Forms.Padding(0, 24, 0, 0);
             this.btnGenerarTurno.Name = "btnGenerarTurno";
             this.btnGenerarTurno.Size = new System.Drawing.Size(140, 40);
             this.btnGenerarTurno.TabIndex = 6;
@@ -234,28 +239,41 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.rtbRecaudacion);
             this.tabPage2.Controls.Add(this.rtbDatosExtendidos);
             this.tabPage2.Controls.Add(this.lstHistorial);
             this.tabPage2.Controls.Add(this.lblHistorial);
+            this.tabPage2.Controls.Add(this.lblRecaudacion);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.lblSelectorFechaHistorial);
             this.tabPage2.Controls.Add(this.selectorFechaHistorial);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(754, 460);
+            this.tabPage2.Size = new System.Drawing.Size(754, 533);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Historial de Atencion";
             this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
             // 
+            // rtbRecaudacion
+            // 
+            this.rtbRecaudacion.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rtbRecaudacion.Location = new System.Drawing.Point(605, 376);
+            this.rtbRecaudacion.Name = "rtbRecaudacion";
+            this.rtbRecaudacion.Size = new System.Drawing.Size(139, 148);
+            this.rtbRecaudacion.TabIndex = 11;
+            this.rtbRecaudacion.Text = "18/6/2022\n   $10000\nUltimos 7 Dias\n   $10000\nUltimos 31 Dias\n   $10000\nUltimos 36" +
+    "5 Dias\n      $10000";
+            // 
             // rtbDatosExtendidos
             // 
-            this.rtbDatosExtendidos.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.rtbDatosExtendidos.Location = new System.Drawing.Point(603, 109);
+            this.rtbDatosExtendidos.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.rtbDatosExtendidos.Location = new System.Drawing.Point(604, 104);
             this.rtbDatosExtendidos.Name = "rtbDatosExtendidos";
-            this.rtbDatosExtendidos.Size = new System.Drawing.Size(139, 344);
+            this.rtbDatosExtendidos.Size = new System.Drawing.Size(139, 233);
             this.rtbDatosExtendidos.TabIndex = 11;
-            this.rtbDatosExtendidos.Text = "";
+            this.rtbDatosExtendidos.Text = "Fecha:\n  18/6/2022 15:00\nTipo de Consulta:\n  ImplanteDental\nPrecio:\n  $24000\nNomb" +
+    "re:\n  Persona\n  Ejemplo\nDNI:\n  37832147\nTelefono:\n  15457894";
             // 
             // lstHistorial
             // 
@@ -280,10 +298,13 @@
             "15",
             "16",
             "17",
-            "18"});
+            "18",
+            "19",
+            "20",
+            "21"});
             this.lstHistorial.Location = new System.Drawing.Point(6, 37);
             this.lstHistorial.Name = "lstHistorial";
-            this.lstHistorial.Size = new System.Drawing.Size(584, 418);
+            this.lstHistorial.Size = new System.Drawing.Size(584, 487);
             this.lstHistorial.TabIndex = 10;
             this.lstHistorial.SelectedIndexChanged += new System.EventHandler(this.lstHistorial_SelectedIndexChanged);
             // 
@@ -293,15 +314,25 @@
             this.lblHistorial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblHistorial.Location = new System.Drawing.Point(6, 15);
             this.lblHistorial.Name = "lblHistorial";
-            this.lblHistorial.Size = new System.Drawing.Size(75, 21);
+            this.lblHistorial.Size = new System.Drawing.Size(133, 21);
             this.lblHistorial.TabIndex = 4;
-            this.lblHistorial.Text = "Historial";
+            this.lblHistorial.Text = "Historial del Día";
+            // 
+            // lblRecaudacion
+            // 
+            this.lblRecaudacion.AutoSize = true;
+            this.lblRecaudacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblRecaudacion.Location = new System.Drawing.Point(604, 352);
+            this.lblRecaudacion.Name = "lblRecaudacion";
+            this.lblRecaudacion.Size = new System.Drawing.Size(108, 21);
+            this.lblRecaudacion.TabIndex = 5;
+            this.lblRecaudacion.Text = "Recaudación";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(600, 85);
+            this.label1.Location = new System.Drawing.Point(601, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 21);
             this.label1.TabIndex = 5;
@@ -345,7 +376,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 503);
+            this.ClientSize = new System.Drawing.Size(773, 577);
             this.Controls.Add(this.btnCambiarEstadoBGM);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -387,5 +418,7 @@
         private System.Windows.Forms.Button btnCambiarEstadoBGM;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtbDatosExtendidos;
+        private System.Windows.Forms.RichTextBox rtbRecaudacion;
+        private System.Windows.Forms.Label lblRecaudacion;
     }
 }

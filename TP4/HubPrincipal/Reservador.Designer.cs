@@ -62,10 +62,12 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(12, 27);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 3, 20, 20);
+            this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PlaceholderText = "Ingrese su Nombre";
             this.txtNombre.Size = new System.Drawing.Size(150, 23);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // lblApellido
             // 
@@ -81,10 +83,12 @@
             // 
             this.txtApellido.Location = new System.Drawing.Point(12, 88);
             this.txtApellido.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.txtApellido.MaxLength = 50;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.PlaceholderText = "Ingrese su Apellido";
             this.txtApellido.Size = new System.Drawing.Size(150, 23);
             this.txtApellido.TabIndex = 2;
+            this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged);
             // 
             // lblDni
             // 
@@ -100,6 +104,7 @@
             // 
             this.txtDni.Location = new System.Drawing.Point(12, 149);
             this.txtDni.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.txtDni.MaxLength = 9;
             this.txtDni.Name = "txtDni";
             this.txtDni.PlaceholderText = "Ingrese su DNI";
             this.txtDni.Size = new System.Drawing.Size(150, 23);
@@ -120,6 +125,7 @@
             // 
             this.txtTelefono.Location = new System.Drawing.Point(12, 210);
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.txtTelefono.MaxLength = 12;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.PlaceholderText = "Telefono de Contacto";
             this.txtTelefono.Size = new System.Drawing.Size(150, 23);

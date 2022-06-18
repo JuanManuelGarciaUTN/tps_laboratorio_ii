@@ -130,14 +130,30 @@ namespace Vista
 
         private void txtDni_TextChanged(object sender, EventArgs e)
         {
-            EliminarCaracteresNoNumericosDeTextBox(txtDni);
+            string caracteresValidos = "1234567890";
+            //solo permite ingresar numeros en el textBox
+            EliminarCaracteresInvalidosDeTextBox(txtDni, caracteresValidos);
         }
 
         private void txtTelefono_TextChanged(object sender, EventArgs e)
         {
-            EliminarCaracteresNoNumericosDeTextBox(txtTelefono);
+            string caracteresValidos = "1234567890";
+            //solo permite ingresar numeros en el textBox
+            EliminarCaracteresInvalidosDeTextBox(txtTelefono, caracteresValidos);
+        }
+        private void txtApellido_TextChanged(object sender, EventArgs e)
+        {
+            string caracteresValidos = "qwertyuiopasdfghjklñzxcvbnm áéíóúü";
+            //solo permite ingresar letras y espacio. Acepta mayusculas y minusculas
+            EliminarCaracteresInvalidosDeTextBox(txtApellido, caracteresValidos);
         }
 
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            string caracteresValidos = "qwertyuiopasdfghjklñzxcvbnm áéíóúü";
+            //solo permite ingresar letras y espacio. Acepta mayusculas y minusculas
+            EliminarCaracteresInvalidosDeTextBox(txtNombre, caracteresValidos);
+        }
         private void Reservador_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (turnoAModificar is not null && seModifico == false)
@@ -146,6 +162,7 @@ namespace Vista
                 manejadorDeTurnos.AgregarTurno(turnoAModificar);
             }
         }
+
 
         /// <summary>
         /// Actualiza la lista de turnos disponibles
@@ -209,13 +226,19 @@ namespace Vista
             return inputsVacios.Count > 0;
         }
 
-        private void EliminarCaracteresNoNumericosDeTextBox(TextBox textBox)
+        /// <summary>
+        /// Recibe un textoBox y un string con caracteres validos
+        /// Elimina todos los caracteres invalidos del textBox
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <param name="caracteresValidos"></param>
+        private void EliminarCaracteresInvalidosDeTextBox(TextBox textBox, string caracteresValidos)
         {
-            string caracteresValidos = "1234567890";
             StringBuilder stringCorrecto = new StringBuilder();
+            string caracteresValidosMayuscula = caracteresValidos.ToUpper();
             foreach (char letra in textBox.Text)
             {
-                if (caracteresValidos.Contains(letra))
+                if (caracteresValidos.Contains(letra) || caracteresValidosMayuscula.Contains(letra))
                 {
                     stringCorrecto.Append(letra);
                 }
@@ -225,6 +248,11 @@ namespace Vista
             textBox.SelectionStart = textBox.Text.Length;
             textBox.SelectionLength = 0;
         }
+
+        /// <summary>
+        /// Obtiene una lista de strings con todos los inputs acltualmente vacios
+        /// </summary>
+        /// <returns></returns>
         private List<string> ObtenerInputsVacios()
         {
             List<string> inputsVacios = new List<string>();
@@ -256,6 +284,10 @@ namespace Vista
             return inputsVacios;
         }
 
+        /// <summary>
+        /// Invoca al metodo asociado al delegado de BGM
+        /// y modifica el texto del boton asociado al estado de la BGM segun corresponda
+        /// </summary>
         private void AsignarEstadoActualBGM()
         {
             if (delegadoBGM.Invoke())
@@ -268,6 +300,10 @@ namespace Vista
             }
         }
 
+        /// <summary>
+        /// Determina si la musica esta sonando o no 
+        /// y asigna el estado correspondiente al boton asociado a la musica de fondo
+        /// </summary>
         private void DeterminarEstadoInicialBGM()
         {
             delegadoBGM.Invoke();

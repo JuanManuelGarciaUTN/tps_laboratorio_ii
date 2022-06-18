@@ -247,7 +247,7 @@ namespace LogicaDeNegocio
             sb.AppendLine($"DNI:");
             sb.AppendLine($"  {this.DniPaciente}");
             sb.AppendLine($"Telefono:");
-            sb.AppendLine($"  {this.telefono}");
+            sb.Append($"  {this.telefono}");
 
             return sb.ToString();
         }

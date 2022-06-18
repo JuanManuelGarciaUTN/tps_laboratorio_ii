@@ -9,8 +9,14 @@ using System.Text;
 
 namespace Vista
 {
+    /// <summary>
+    /// Parte del proyecto que contiene los temas:
+    /// Tema 19 - Programacion multi-hilo y concurrencia
+    /// Tema 20 - Evento
+    /// </summary>
     public partial class Administracion : Form
     {
+        //atributos
         private ManejadorDeTurnos manejadorDeTurnos;
         private Hub.CambiarEstadoBGM delegadoBGM;
         private SoundPlayer playerSFX;
@@ -33,7 +39,9 @@ namespace Vista
             selectorFechaHistorial.MaxDate = DateTime.Now;
             btnGenerarTurno.Focus();
 
+            //asocio el metodo al respectivo evento
             recordatorioCadaMediaHora.OnTiempoCumplido += InformarSiHayUnTurnoPendiente;
+            //inicia el recordatorio del evento cada 30 minutos (cuando la hora es XX:00 y XX:30)
             recordatorioCadaMediaHora.IniciarCadaHora(30);
             recordatorioCadaMediaHora.IniciarCadaHora(0);
         }
@@ -41,13 +49,36 @@ namespace Vista
         private void selectorFecha_ValueChanged(object sender, EventArgs e)
         {
             ActualizarTurnos();
-            if(selectorFechaTurnos.Value.DayOfYear != DateTime.Now.DayOfYear)
+            //si la fecha seleccionado no es hoy, no se puede indicar que un turno fue atendido
+            if(selectorFechaTurnos.Value.Date != DateTime.Now.Date)
             {
                 btnAtender.Enabled = false;
             }
             else
             {
                 btnAtender.Enabled = true;
+            }
+        }
+        private void selectorFechaHistorial_ValueChanged(object sender, EventArgs e)
+        {
+            ActualizarHistorial();
+            ActualizarRecaudacion();
+        }
+        private void tabPage2_Enter(object sender, EventArgs e)
+        {
+            ActualizarHistorial();
+            ActualizarRecaudacion();
+        }
+
+        private void lstHistorial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                rtbDatosExtendidos.Text = ((Turno)lstHistorial.SelectedItem).MostrarCompacto();
+            }
+            catch (Exception)
+            {
+                rtbDatosExtendidos.Text = "";
             }
         }
 
@@ -62,6 +93,7 @@ namespace Vista
                     Reservador reservardorTurnos = new Reservador(manejadorDeTurnos, turnoAModificar, playerSFX, delegadoBGM);
                     this.Hide();
                     reservardorTurnos.ShowDialog();
+                    //al finalizar el reservado de turnos actualiza la vista
                     ActualizarTurnos();
                     ActualizarHistorial();
                     DeterminarEstadoInicialBGM();
@@ -218,6 +250,10 @@ namespace Vista
             }
         }
 
+        /// <summary>
+        /// Invoca el metodo asociado al delegado
+        /// y modifica el texto del boton cambiar estado BGM segun corresponda
+        /// </summary>
         private void AsignarEstadoActualBGM()
         {
             if (delegadoBGM.Invoke())
@@ -230,12 +266,24 @@ namespace Vista
             }
         }
 
+        /// <summary>
+        /// Determina si la musica esta sonando o no, 
+        /// para asi asignar correctamente el estado inicial del boton cambiar estado BGM
+        /// </summary>
         private void DeterminarEstadoInicialBGM()
         {
             delegadoBGM.Invoke();
             AsignarEstadoActualBGM();
         }
 
+        /// <summary>
+        /// Metodo asociado al evento de recordatorio cada 30 minutos
+        /// Si hay un turno pendiente, al cumplise la hora muestra un recordatorio
+        /// de que hay un turno pendiente, con los datos del mismo.
+        /// 
+        /// Si se esta actualmente en otro form secundario a este, espera a que se vuelva
+        /// la vista a este form para mostrar el recordatorio
+        /// </summary>
         private void InformarSiHayUnTurnoPendiente()
         {
             //Utilizo task para que en caso de no estar actualmente visible el form
@@ -249,7 +297,7 @@ namespace Vista
                 }
                 try
                 {
-                    Turno turno = manejadorDeTurnos.ObtenerTurnoPorHorario(horaAVerificar);
+                    Turno turno = manejadorDeTurnos.ObtenerTurnoSegunFecha(horaAVerificar);
 
                     string mensaje = $"Hay Un Turno Pendiente:{Environment.NewLine}{Environment.NewLine}" +
                                      $"{turno.Mostrar()}";
@@ -264,25 +312,28 @@ namespace Vista
             );
         }
 
-        private void selectorFechaHistorial_ValueChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Actualiza el valor de la recaudacion de los ultimos 365 dias
+        /// </summary>
+        private void ActualizarRecaudacion()
         {
-            ActualizarHistorial();
-        }
-        private void tabPage2_Enter(object sender, EventArgs e)
-        {
-            ActualizarHistorial();
-        }
+            DateTime fechaDesde = selectorFechaHistorial.Value;
+            float recaudacionDia = manejadorDeTurnos.ObtenerRecuadacion(fechaDesde, 1);
+            float recaudacionUltimos7 = manejadorDeTurnos.ObtenerRecuadacion(fechaDesde, 7);
+            float recaudacionUltimos31 = manejadorDeTurnos.ObtenerRecuadacion(fechaDesde, 31);
+            float recaudacionUltimos365 = manejadorDeTurnos.ObtenerRecuadacion(fechaDesde, 365);
 
-        private void lstHistorial_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                rtbDatosExtendidos.Text = ((Turno)lstHistorial.SelectedItem).MostrarCompacto();
-            }
-            catch(Exception)
-            {
-                rtbDatosExtendidos.Text = "";
-            }
+            StringBuilder informeDeRecaudacion = new StringBuilder();
+            informeDeRecaudacion.AppendLine($"{fechaDesde.ToString("dd-MM-yyyy")}");
+            informeDeRecaudacion.AppendLine($"   ${recaudacionDia.ToString("N0")}");
+            informeDeRecaudacion.AppendLine($"Ultimos 7 Días");
+            informeDeRecaudacion.AppendLine($"   ${recaudacionUltimos7.ToString("N0")}");
+            informeDeRecaudacion.AppendLine($"Ultimos 31 Días");
+            informeDeRecaudacion.AppendLine($"   ${recaudacionUltimos31.ToString("N0")}");
+            informeDeRecaudacion.AppendLine($"Ultimos 365 Días");
+            informeDeRecaudacion.Append($"   ${recaudacionUltimos365.ToString("N0")}");
+
+            rtbRecaudacion.Text = informeDeRecaudacion.ToString();
         }
     }
 }

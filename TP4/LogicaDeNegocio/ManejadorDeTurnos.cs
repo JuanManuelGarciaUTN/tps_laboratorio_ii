@@ -12,6 +12,8 @@ namespace LogicaDeNegocio
     /// Parte del proyecto que contiene los temas:
     /// Tema 14 - Archivos
     /// Tema 15 - Serializacion
+    /// Tema 16 - Introducción a bases de datos y SQL
+    /// Tema 17 - Conexión a bases de datos
     /// </summary>
     public class ManejadorDeTurnos
     {
@@ -43,6 +45,9 @@ namespace LogicaDeNegocio
             get { return precios; }
         }
 
+        /// <summary>
+        /// Obtiene todos los turnos de la base de datos en formato de lista
+        /// </summary>
         private List<Turno> Turnos
         {
             get
@@ -130,9 +135,9 @@ namespace LogicaDeNegocio
         }
 
         /// <summary>
-        /// Agrega un turno a la lista de turnos
+        /// Agrega un turno a la base de datos SQL, si ya no existe un turno con la misma fecha y hora
         /// </summary>
-        /// <param name="turno"></param>
+        /// <param name="turno">turno que se desea agregar</param>
         public void AgregarTurno(Turno turno)
         {
             string atributosDeTurno = "fecha, precio, tipo, telefono, nombre, apellido, dni, fueAtendido";
@@ -181,6 +186,11 @@ namespace LogicaDeNegocio
             AgregarTurno(nuevoTurno);
         }
 
+
+        /// <summary>
+        /// Recibe un turno y si existe en la base de datos SQL, modifica su estado fueAtendido a 1 (true)
+        /// </summary>
+        /// <param name="turnoAtendido">turno que se desea indicar como atendido</param>
         public void MarcarTurnoComoAtendido(Turno turnoAtendido)
         {
             try
@@ -208,7 +218,7 @@ namespace LogicaDeNegocio
         }
 
         /// <summary>
-        /// Elimina un turno de la lista de turnos
+        /// Elimina un turno de la base de datos SQL
         /// </summary>
         /// <param name="turno"></param>
         public void EliminarTurno(Turno turno)
@@ -240,7 +250,7 @@ namespace LogicaDeNegocio
 
         /// <summary>
         /// Guarda la lista de turnos en el path especificado.
-        /// Elimina turnos vencidos (fecha menor a la actual)
+        /// Elimina turnos no atendidos vencidos (fecha menor a la actual)
         /// Utiliza serializacion JSON
         /// </summary>
         /// <param name="path">path donde se guardara la lista de turnos</param>
@@ -312,7 +322,7 @@ namespace LogicaDeNegocio
         }
 
         /// <summary>
-        /// Devuelve una lista con los turnos del dia especificado
+        /// Devuelve una lista con todos turnos del dia especificado
         /// Los devuelve ordenados en orden ascendente
         /// </summary>
         /// <param name="fecha">fecha de la cual se desea saber los turnos</param>
@@ -321,42 +331,27 @@ namespace LogicaDeNegocio
         {
             List<Turno> turnosDelDia = new List<Turno>();
 
-            long inicioDelDia = fecha.Date.ObtenerFormatoFechaHoraLong();
-            long finDelDia = fecha.Date.AddHours(23).ObtenerFormatoFechaHoraLong();
-            string querry = $"SELECT * FROM {nombreDeTabla} WHERE fecha > @inicio AND fecha < @fin";
-
-            try
-            {
-                coneccionBaseDeDatos.Open();
-                command.CommandText = querry;
-
-                command.Parameters.Clear();
-                command.Parameters.AddWithValue("inicio", inicioDelDia);
-                command.Parameters.AddWithValue("fin", finDelDia);
-
-                SqlDataReader dataReader = command.ExecuteReader();
-                turnosDelDia = ObtenerTurnosDeDataReader(dataReader);
-            }
-            catch(Exception)
-            {
-            }
-            finally
-            {
-                if(coneccionBaseDeDatos.State == System.Data.ConnectionState.Open)
-                {
-                    coneccionBaseDeDatos.Close();
-                }
-            }
+            turnosDelDia = ObtenerTurnosDelDia(fecha, false);
+            turnosDelDia.AddRange(ObtenerTurnosDelDia(fecha, true));
 
             turnosDelDia.Sort();
             return turnosDelDia;
         }
+
+        /// <summary>
+        /// Devuelve una lista con turnos del dia especificado,
+        /// segun si se desea obtener los turnos pendientes o que ya fueron atendidos
+        /// Los devuelve ordenados en orden ascendente
+        /// </summary>
+        /// <param name="fecha">fecha de la cual se desea saber los turnos</param>
+        /// <param name="atendidos">si se desea obtener los turnos atendidos o no atendidos</param>
+        /// <returns></returns>
         public List<Turno> ObtenerTurnosDelDia(DateTime fecha, bool atendidos)
         {
             List<Turno> turnosDelDia = new List<Turno>();
 
             long inicioDelDia = fecha.Date.ObtenerFormatoFechaHoraLong();
-            long finDelDia = fecha.Date.AddHours(23).ObtenerFormatoFechaHoraLong();
+            long finDelDia = fecha.Date.AddHours(24).ObtenerFormatoFechaHoraLong();
 
             string estado = atendidos ? "1" : "0";
             string querry = $"SELECT * FROM {nombreDeTabla} WHERE fecha > @inicio AND fecha < @fin AND fueAtendido = {estado}";
@@ -397,7 +392,14 @@ namespace LogicaDeNegocio
             return ObtenerTurnosDelDia(DateTime.Now);
         }
 
-        public Turno ObtenerTurnoPorHorario(long horario)
+
+        /// <summary>
+        /// Devuelve un turno segun su fecha y hora en formato long
+        /// Si no existe ningun turno en dicha fecha y hora devuelve null
+        /// </summary>
+        /// <param name="fecha">fecha yhora del turno a obtener</param>
+        /// <returns></returns>
+        public Turno ObtenerTurnoSegunFecha(long fecha)
         {
             try
             {
@@ -406,7 +408,7 @@ namespace LogicaDeNegocio
                 command.CommandText = querry;
 
                 command.Parameters.Clear();
-                command.Parameters.AddWithValue("@horario", horario);
+                command.Parameters.AddWithValue("@horario", fecha);
 
                 SqlDataReader dataReader = command.ExecuteReader();
                 dataReader.Read();
@@ -462,7 +464,7 @@ namespace LogicaDeNegocio
         }
 
         /// <summary>
-        /// Elimina turnos cuya fecha sea menor a la actual
+        /// Elimina turnos no atendidos cuya fecha sea menor a la actual
         /// </summary>
         private void EliminarTurnosVencidos()
         {
@@ -489,18 +491,11 @@ namespace LogicaDeNegocio
             }
         }
 
-        private void InstanciarSqlConecction(string connectionString)
-        {
-            try
-            {
-                coneccionBaseDeDatos = new SqlConnection(connectionString);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
+        /// <summary>
+        /// Genera una lista de turnos segun con todos los turnos de un dataReader
+        /// </summary>
+        /// <param name="dataReader"></param>
+        /// <returns>lista de turnos obtenidos</returns>
         private static List<Turno> ObtenerTurnosDeDataReader(SqlDataReader dataReader)
         {
             List<Turno> turnos = new List<Turno>();
@@ -516,29 +511,99 @@ namespace LogicaDeNegocio
 
             return turnos;
         }
+
+        /// <summary>
+        /// Lee los datos de las columnas de un dataReader
+        /// para generar una nueva instancia de Turno segun los datos
+        /// </summary>
+        /// <param name="dataReader"></param>
+        /// <returns>Turno generado - o null si no pudo ser generado</returns>
         private static Turno GenerarTurnoDesdeDataReader(SqlDataReader dataReader)
         {
             Turno turno;
 
-            //obtengo los datos del dataReader
-            long fechaCompleta = dataReader.GetInt64(0);
-            float precio = dataReader.GetFloat(1);
-            Turno.TipoConsulta tipo = (Turno.TipoConsulta)dataReader.GetInt16(2);
-            string telefono = dataReader.GetString(3);
-            string nombre = dataReader.GetString(4);
-            string apellido = dataReader.GetString(5);
-            int dni = dataReader.GetInt32(6);
-
-            DateTime fecha = fechaCompleta.ObtenerFecha();
-
             try
             {
-                turno = new Turno(fecha, precio, tipo, dni, telefono, nombre, apellido);
+                //obtengo los datos del dataReader
+                long fechaCompleta = dataReader.GetInt64(0);
+                float precio = dataReader.GetFloat(1);
+                Turno.TipoConsulta tipo = (Turno.TipoConsulta)dataReader.GetInt16(2);
+                string telefono = dataReader.GetString(3);
+                string nombre = dataReader.GetString(4);
+                string apellido = dataReader.GetString(5);
+                int dni = dataReader.GetInt32(6);
+                bool fueAtendido =  dataReader.GetBoolean(7);
+
+                //convierto la fecha de formato long a DateTime
+                DateTime fecha = fechaCompleta.ObtenerFecha();
+
+                turno = new Turno(fecha, precio, tipo, dni, telefono, nombre, apellido, fueAtendido);
                 return turno;
             }
             catch (Exception)
             {
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la recaudacion diaria desde la fecha indicada por parametro,
+        /// hasta la cantidad de dias indicados por parametros
+        /// </summary>
+        /// <param name="fechaDesde">fecha desde donde se desea obtener la reaudacion</param>
+        /// <param name="cantidadDeDias">cantidad de dias hasta donde se desea obtener la recaudacion</param>
+        /// <returns>recaudacion dentro del rango indicado</returns>
+        public float ObtenerRecuadacion(DateTime fechaDesde, int cantidadDeDias)
+        {
+            float recaudacionTotal = 0;
+            fechaDesde = fechaDesde.Date;
+            long fechaDesdeLong = fechaDesde.AddDays(1).ObtenerFormatoFechaHoraLong();
+            long fechaHastaLong = fechaDesde.AddDays(-cantidadDeDias + 1).ObtenerFormatoFechaHoraLong();
+
+            string querry = $"SELECT precio FROM {nombreDeTabla} WHERE fueAtendido = 1 AND fecha < @fechaDesde AND fecha > @fechaHasta";
+
+            try
+            {
+                coneccionBaseDeDatos.Open();
+
+                command.CommandText = querry;
+                command.Parameters.Clear();
+                command.Parameters.AddWithValue("fechaDesde", fechaDesdeLong);
+                command.Parameters.AddWithValue("fechaHasta", fechaHastaLong);
+
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    recaudacionTotal += dataReader.GetFloat(0);
+                }
+                return recaudacionTotal;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            finally
+            {
+                if (coneccionBaseDeDatos.State == System.Data.ConnectionState.Open)
+                {
+                    coneccionBaseDeDatos.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Inicializa la conexion con la base de datos SQL segun el conectionString
+        /// </summary>
+        /// <param name="connectionString"></param>
+        private void InstanciarSqlConecction(string connectionString)
+        {
+            try
+            {
+                coneccionBaseDeDatos = new SqlConnection(connectionString);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }
